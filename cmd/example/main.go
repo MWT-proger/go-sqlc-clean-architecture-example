@@ -10,7 +10,7 @@ import (
 )
 
 func main() {
-	conf := &configs.Config{HostServer: ":8000", DatabaseDSN: "", LogLevel: "debug"}
+	conf := configs.InitConfig()
 
 	if err := logger.Initialize(conf.LogLevel); err != nil {
 		panic(err)
