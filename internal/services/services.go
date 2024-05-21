@@ -3,18 +3,18 @@ package services
 import (
 	"context"
 
-	"github.com/MWT-proger/go-sqlc-clean-architecture-example/configs"
+	"github.com/MWT-proger/go-sqlc-clean-architecture-example/internal/config"
 )
 
 type UserStorer interface {
 }
 
 type UserService struct {
-	conf      *configs.Config
+	conf      *config.Config
 	userStore UserStorer
 }
 
-func NewUserService(s UserStorer, config *configs.Config) *UserService {
+func NewUserService(s UserStorer, config *config.Config) *UserService {
 
 	return &UserService{
 		conf:      config,

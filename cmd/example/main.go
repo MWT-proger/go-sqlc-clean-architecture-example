@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/MWT-proger/go-sqlc-clean-architecture-example/configs"
+	"github.com/MWT-proger/go-sqlc-clean-architecture-example/internal/config"
 	"github.com/MWT-proger/go-sqlc-clean-architecture-example/internal/logger"
 	"github.com/MWT-proger/go-sqlc-clean-architecture-example/internal/rest/handlers"
 	"github.com/MWT-proger/go-sqlc-clean-architecture-example/internal/rest/server"
@@ -10,7 +10,10 @@ import (
 )
 
 func main() {
-	conf := configs.InitConfig()
+	conf, err := config.InitConfig()
+	if err != nil {
+		panic(err)
+	}
 
 	if err := logger.Initialize(conf.LogLevel); err != nil {
 		panic(err)

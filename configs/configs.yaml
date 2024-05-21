@@ -1,0 +1,4 @@
+host: "localhost:7000"
+log_level: debug
+database:
+  dsn: "user=postgres password=postgres host=localhost port=5432 dbname=testDB sslmode=disable"

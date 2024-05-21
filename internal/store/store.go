@@ -4,7 +4,7 @@ import (
 	"context"
 	"database/sql"
 
-	"github.com/MWT-proger/go-sqlc-clean-architecture-example/configs"
+	"github.com/MWT-proger/go-sqlc-clean-architecture-example/internal/config"
 	"github.com/MWT-proger/go-sqlc-clean-architecture-example/internal/logger"
 )
 
@@ -21,7 +21,7 @@ type Store struct {
 }
 
 // NewStore создаёт и возвращает новый экземпляр хранилища.
-func NewStore(ctx context.Context, conf *configs.Config) (*Store, error) {
+func NewStore(ctx context.Context, conf *config.Config) (*Store, error) {
 	var storage = Store{}
 
 	ctx, cancel := context.WithCancel(ctx)
@@ -36,13 +36,13 @@ func NewStore(ctx context.Context, conf *configs.Config) (*Store, error) {
 // Init вызывается при запуске программы,
 // инициализирует соединение
 // и возвращает ошибку в случае не удачи.
-func (s *Store) Init(ctx context.Context, conf *configs.Config) error {
+func (s *Store) Init(ctx context.Context, conf *config.Config) error {
 	logger.Log.Info("Хранилище: Подключение - ...")
 
 	ctx, cancel := context.WithCancel(ctx)
 	defer cancel()
 
-	var db, err = sql.Open("pgx", conf.DatabaseDSN)
+	var db, err = sql.Open("pgx", conf.Database.DSN)
 
 	if err != nil {
 		return err

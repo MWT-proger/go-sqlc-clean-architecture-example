@@ -16,4 +16,5 @@ require (
 require (
 	github.com/pressly/goose/v3 v3.20.0
 	go.uber.org/multierr v1.11.0 // indirect
+	gopkg.in/yaml.v2 v2.4.0
 )
