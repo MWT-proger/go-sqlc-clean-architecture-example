@@ -1,0 +1,26 @@
+version: "2"
+sql:
+  - name: user-postgresql
+    schema: ../internal/store/migrations
+    queries: ../internal/store/queries/userquery.sql
+    engine: postgresql
+    gen:
+      go:
+        sql_package: pgx/v5
+        package: userstore
+        package_models: models
+        package_models_path_import: github.com/MWT-proger/go-sqlc-clean-architecture-example/internal
+        out: ../internal
+        output_models_file_name: ../internal/models/user.go
+        output_queries_path_name: ../internal/store/userstore
+        output_db_file_name: ../internal/store/userstore/db.go
+        output_querier_file_name: ../internal/store/userstore/querier.go
+        output_batch_file_name: ../internal/store/userstore/batch.go
+        omit_unused_structs: true
+        emit_interface: true
+overrides:
+  go:
+    overrides:
+      - db_type: "uuid"
+        engine: "postgresql"
+        go_type: "github.com/google/uuid.UUID"
