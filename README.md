@@ -6,7 +6,7 @@ This is an example of how we can use the SQLC package and still follow the princ
 1. Clone the repository to any suitable directory on your computer.
 
 ```bash
-git clone https://github.com/MWT-proger/go-keeper.git
+git clone https://github.com/MWT-proger/go-sqlc-clean-architecture-example.git
 ```
 
 
